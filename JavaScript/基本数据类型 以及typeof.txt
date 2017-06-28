@@ -1,0 +1,12 @@
+基本数据类型 number string boolean undefined
+typeof用户判断变量的类型 
+var a=12;
+console.log(typeof a);
+则打印的就是Number
+var a = "asdas"
+console.log(typeof a)
+则打印的就是string类型
+
+若我们定义
+var a;然后定义console.log(typeof a)
+则是undefined

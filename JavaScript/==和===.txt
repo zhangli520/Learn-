@@ -1,0 +1,10 @@
+
+是表达式就会有值
+
+关系运算符的结构只有true或者false；var a=10;var b=20; a>b  false
+
+var x=100;var y="100"
+console.log(x==y) true
+// ==只比较数值不比较类型，===即比较数值也比较数据类型
+
+!=  !==也是同理

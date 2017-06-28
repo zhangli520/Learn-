@@ -1,0 +1,8 @@
+《Javascript权威指南 第六版》、
+《Javascript高级程序设计 第三版》、
+《编写高质量代码：改善Javascript程序的188个建议》、
+《锋利的Jquery》、
+《Javascript DOM编程艺术》、
+《JQuery技术内幕》、
+《深入浅出NodeJs》
+

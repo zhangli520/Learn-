@@ -1,0 +1,166 @@
+import React, { Component, propTypes } from 'react'
+import {
+  List,
+  Icon,
+  TextareaItem,
+  Toast
+} from 'antd-mobile';
+
+import { connect } from 'dva'
+import { createForm } from 'rc-form'
+
+const Item = List.Item;
+
+function ChangeNumber({ user, dispatch, form }) {
+
+  const { phoneNumber, custId, custid, custmobile } = user;
+
+  function onSubmit() {
+    form.validateFields({
+      force: true
+    }, (error) => {
+      if (!error) {
+        dispatch({
+          type: 'userangePhoneNumber',
+          payload: {
+            custid: custid,
+            custmobile: form.getFieldsValue().confirmPassword
+          }
+        })
+      } else {
+        Toast.fail('校验失败');
+      }
+    });
+  }
+
+  function validateAccount(rule, value, callback) {
+    if (value && value.length > 4) {
+      callback();
+    } else {
+      callback(new Error('帐号至少4个字符'));
+    }
+  }
+
+  function validatePhoneNumber(rule, value, callback) {
+    if (value && value.length > 4) {
+      callback();
+    } else {
+      callback(new Error('帐号至少5个字符'));
+    }
+  }
+
+
+  //手机号码的校验规则
+  function validateAddmobile(rule, value, callback) {
+    if (value && (/^1(3|4|5|7|8)\d{9}$/.test(value))) {
+      callback();
+    } else {
+      callback(new Error('手机号码输入有误'));
+    }
+  }
+
+  //验证两次输入手机号是否一致
+  function comparePhoneNumber(rule, value, callback) {
+    if ( value && value === form.getFieldValue("newPassword") ) {
+      callback();
+    } else {
+      callback(new Error('两次输入手机号不一致'));
+    }
+  }
+
+
+  const { getFieldProps, getFieldError } = form;
+
+  return (
+    <form>
+      <List
+        renderHeader={() => <span><Icon type="lock" />修改手机号码</span>}
+        renderFooter={() => getFieldError('account') && getFieldError('account').join(',')}>
+        <TextareaItem
+          {...getFieldProps('account',
+            { initialValue: custmobile,
+            rules: [
+              { required: true, message: '请输入手机号码' },
+              { validator: validateAccount },
+            ],
+            }) }
+          clear
+          error={!!getFieldError('account')}
+          onErrorClick={() => {
+            Toast.fail(getFieldError('account').join('、'));
+          }}
+          title="当前号码"
+          placeholder="请输入当前号码"
+          data-seed="logId"
+          autoHeight
+        />
+
+        {/*<InputItem
+          {...getFieldProps('idenCode') }
+          placeholder="请填写验证码"
+          extra={< Button className="btn" style={{ padding: '0 20px',backgroundColor: 'yellowgreen' ,height: '60px', lineHeight: '60px', borderRadius: '30px' }} type="primary" > 获取验证码 </Button>} />*/}
+
+        <TextareaItem
+//=======
+//          placeholder="请输入当前号码">当前号码</InputItem>
+//        <InputItem
+//>>>>>>> origin/jcxu
+          {...getFieldProps('newPassword',
+            { initialValue: '',
+              rules: [
+                { required: true, message: '请输入新手机号码' },
+                { validator: validateAddmobile },
+              ] }) }
+          clear
+          error={!!getFieldError('newPassword')}
+          onErrorClick={() => {
+            Toast.fail(getFieldError('newPassword').join('、'));
+          }}
+          title="新手机号"
+          placeholder="请输入新手机号码"
+          data-seed="logId"
+          autoHeight
+        />
+
+        <TextareaItem
+          {...getFieldProps('confirmPassword',
+            { initialValue: '',
+              rules: [
+                { required: true, message: '请再次输入新手机号码' },
+                { validator: comparePhoneNumber },
+            ] }) }
+          clear
+          error={!!getFieldError('confirmPassword')}
+          onErrorClick={() => {
+            Toast.fail(getFieldError('confirmPassword').join('、'));
+          }}
+          title="确认手机"
+          placeholder="请再次输入新手机号码"
+          data-seed="logId"
+          autoHeight
+        />
+
+
+      </List>
+
+      <div style={{
+        margin: '12px 0 12px 0'
+      }}>
+        <div style={{ width: '100%', height: '1rem', lineHeight: '1rem', textAlign: 'center', backgroundColor: '#1dbf63', color: 'white' }} onClick={onSubmit}>
+          确认
+        </div>
+      </div>
+
+    </form>
+  )
+}
+
+ChangeNumber.propTypes = {};
+
+ChangeNumber = createForm()(ChangeNumber);
+
+function mapStateToProps({ user }) {
+  return { user }
+}
+
+export default connect(mapStateToProps)(ChangeNumber)

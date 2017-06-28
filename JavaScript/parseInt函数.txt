@@ -1,0 +1,4 @@
+var asd = prompt("input");alert(parseInt(asd));
+prompt用于获取用户的输入。之后将输入的值赋值给asd变量，当我们输入的是数字1，2,3等值时，
+因为prompt获取到的是字符串，所以我们用parseInt转化成数字1,2,3.如果我们输入的是字符串比如
+qwwq则打印出来的是 NaN

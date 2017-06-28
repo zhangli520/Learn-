@@ -1,0 +1,10 @@
+function test(a){
+
+	if(a<0){
+		return a//结束函数的执行，直接返回到调用函数的位置
+	}else{
+		alert(a)
+	}
+}
+var aa = test(a);
+console.log(aa);
