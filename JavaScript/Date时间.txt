@@ -1,0 +1,45 @@
+1，获取时间
+var datea= new Date();console.log(datea)
+VM6013:1 Fri Jun 30 2017 11:16:59 GMT+0800 (中国标准时间)
+
+
+var datea= new Date("2/2/2017");console.log(datea)
+VM6646:1 Thu Feb 02 2017 00:00:00 GMT+0800 (中国标准时间)
+
+var t1= Date.parse("1/1/1970 08:00:00")
+alert(t1)  ==> 0
+
+var data = new Date(Date.UTC(2018,9,10,0,9,10));console.log(data);
+VM8602:1 Wed Oct 10 2018 08:09:10 GMT+0800 (中国标准时间)
+Data.UTC()就是把特定格式的字符串转化成毫秒数，再在new Date函数中转化成时间字符串
+	alert(data.toLocalString());
+	alert: 2018/10/10 上午8:09:10
+data.valueod()计算得失从1970 1,1 8.00到现在的毫秒数
+
+
+2，日期格式化
+data.toLocaleDateString() //获取的是本地的日期 2018/10/10
+
+var t1=new Date();var timer = (t1.getFullYear())+'年'+(t1.getMonth())+"月"+(t1.getDate())+"日"+(t1.getHours())+"时";console.log(timer)
+VM20426:1 2017年5月30日13时
+var t1=new Date();console.log(t1.toLocaleDateString())
+输出 2017/6/30
+
+S获得当前时间 并格式化为:yyyy-MM-dd HH:MM:SS 
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+}

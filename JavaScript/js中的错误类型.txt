@@ -1,0 +1,30 @@
+Error
+EvalError(eval错误)(弃用)
+RangeError(范围错误)
+ReferenceError(引用错误)
+SyntaxError(语法错误)
+TypeError(类型错误)
+URIError(URI错误)
+
+error是基类型
+【RangeError(范围错误)】
+RangeError类型的错误会在一个值超出相应范围时触发，主要包括超出数组长度范围以及超出数字取值范围等
+new Array(-1);//Uncaught RangeError: Invalid array length
+
+【ReferenceError(引用错误)】
+引用一个不存在的变量或左值(lvalue)类型错误时，会触发ReferenceError(引用错误)
+a;//Uncaught ReferenceError: a is not defined
+1++;//Uncaught ReferenceError: Invalid left-hand side expression 
+
+【SyntaxError(语法错误)】
+当不符合语法规则时，会抛出SyntaxError(语法错误)
+
+4.TypeError（类型错误）
+a.变量或参数不是预期类型，比如，对字符串、布尔值、数值等原始类型的值使用new命令，就会抛出这种错误，因为new命令的参数应该是一个构造函数。
+eg: var a= new 123;
+　　Uncaught TypeError: 123 is not a function
+b.调用对象不存在的方法
+eg:var a;a.aa();
+　　Uncaught TypeError: Cannot read property 'aa' of undefined
+
+

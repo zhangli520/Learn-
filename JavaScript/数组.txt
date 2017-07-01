@@ -1,0 +1,56 @@
+js数组中的方法的运用
+
+var arr=["Liuneng",46,"铁岭","演员"]；
+alert(arr) //把数组中的数据转成字符串返回，内部自动调用了tostring()
+
+join //使用特定分隔符来连接数组
+arr.join("/")
+alert: Liuneng/46/铁岭/演员
+
+push //向数组末尾添加数据
+arr.push("中国")；
+console.log(arr.push(123)) arr.push(123)会有返回值，返回的是arr现在的数值个数；
+并且只有执行了arr.push(123)之后现在在console.log(arr),他现在已经多了一个值；
+
+pop() //删除数组的最后一个值，并且将其返回；
+var arr=["Liuneng",46,"铁岭","演员"];console.log(arr.pop()) ;alert(arr);
+演员
+alert: Liuneng,46,铁岭
+
+unshift 向数组的开头添加数值，并返回数值的长度 (记忆带shift的都是在数值的前端操作)
+shift    删除数组的第一个值，并且将其返回；
+
+concat //想数组末尾添加数值并返回新数组
+var arr=["Liuneng",46,"铁岭","演员"];var newarr = arr.concat("shanghai") ;alert(newarr) alert(arr);
+注意原数组并没有发生任何改变，concat返回的是一个新数组
+
+slice //基于当前数组获取指定区域元素并返回一个新数组
+arr.slice(1,3) //从数组下标1的位置开始截取，知道3的前一个 [1,3)，不包含后一个是小括号
+var arr=["Liuneng",46,"铁岭","演员"];var newarr = arr.slice(1,3) ;alert(newarr); alert(arr);
+alert: 46,铁岭
+alert: Liuneng,46,铁岭,演员
+
+splice: 删除，插入，替换
+arr.splice(0,2) //从0这个位置开始，截取两个2个值，然后将这两个数从原数组中删除，并且返回一个新的数组。
+新数组是截取的那两个值
+var arr=["Liuneng",46,"铁岭","演员"];var newarr = arr.splice(1,2) ;console.log(newarr); console.log(arr);
+[46, "铁岭"]
+["Liuneng", "演员"]
+插入 // arr.splice(m,0,"新东西")
+插入返回新数组。原数组不变；
+
+在截取功能方面，splice和slice都有截取的功能，但是slice的截取之后返回新数组，原数组不变
+而splice则是从原数组中截取，返回新数组原数组不变，还有一点slice（m，n）m,n是下标，而
+splice(m,n)m是下标，n是截取的个数
+
+替换功能暂时不介绍，没啥意义；
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+
+
+前面介绍了引用类型 Object Array Date
+js 也为一些基本类型定义了引用类型number--Number boolean--Bollean string--String
+所以基本类型 也是可以使用了引用类型的一些方法比如 var a="asd",我们可以使用a.length的方法来测试他的长度
+这一点常被人忽视，因为基本类型本身是没有方法的
+
+var a="asd"
+var ss = new String(asd);
+
+
+var ss="asdasdqwes"
+charAt(index) 返回索引对应的字符串编码
+idnexof("dq") 默认返回字符串中第一次出现的索引位置(下标位置从0 开始)
