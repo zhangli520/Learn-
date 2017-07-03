@@ -1,0 +1,36 @@
+1，普通方式function
+function fun1(num1,num2){
+	return num1+num2;
+}
+
+2,变量的方式
+ var fun2=function(num1,num2){
+
+	return  num1+num2;
+
+}
+3，new的方式 //pass
+
+
+function 内部的属性arguments，用于判断传给函数的参数个数
+function add(a,b,c）{
+	alert(arguments.length)
+}
+add(2,3,5,6) 传多少个数arguments就会接受多少个参数
+arguments[0],arguments[1]..
+
+函数名.length
+function add(a,b){
+}
+add.length   => 定义函数时的参数的个数
+add中arguments.length 是传给函数的参数个数
+
+在函数外定义的变量叫全局变量，任何一个函数都可以使用，是一个公共的，
+都可以修改它，他也会相应改变，所以任何一个函数都会污染全局变量；
+当局部变量和全局变量同名时，全局变量无效；
+
+var test(a,b){
+	return a+b;
+}
+var f = test;
+f(3,5);

@@ -1,0 +1,24 @@
+function sum(num1,num2){
+	return num1+num2
+}
+function show1(num1,num2){
+	return sum.call(this,num1,num2) //第一个参数是调用sum函数的对象，后边的参数是传递给sum的实际数据
+}
+function show2(num1,num2){
+	return sum.call(this,num1,num2) //第一个参数是调用sum函数的对象，后边的参数是传递给sum的实际数据
+}
+
+alert(show1(10,10));//widnow对象在调用,
+alert(show2(10,10));
+可以使用call，apply方法来改变调用的对象
+例如：
+function test(){
+	this.property = "hello world";
+}
+test() //this指向了window
+alert(window.property) //打印的就是hello world
+var obj1={};
+test.call(obj1)  //this指向的就是obj1了，相当于给obj1添加了一个新属性property
+alert(obj1.perperty);
+
+改变调用对象；
